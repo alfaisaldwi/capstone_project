@@ -60,7 +60,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       controller: _usernameController,
                       decoration: const InputDecoration(
                           prefixIcon: Icon(
-                            Icons.account_box,
+                            Icons.account_box_outlined,
                             color: Colors.black,
                           ),
                           labelText: 'Username',
@@ -80,7 +80,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       controller: _emailController,
                       decoration: const InputDecoration(
                           prefixIcon: Icon(
-                            Icons.mail,
+                            Icons.mail_outline,
                             color: Colors.black,
                           ),
                           labelText: 'Email',
@@ -99,7 +99,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       obscureText: _isHidden,
                       controller: _passwordController,
                       decoration: InputDecoration(
-                        prefixIcon: const Icon(Icons.lock),
+                        prefixIcon: const Icon(Icons.lock_outline_sharp),
                         labelText: 'Password',
                         suffix: InkWell(
                           onTap: _togglePasswordView,

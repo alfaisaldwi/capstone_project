@@ -1,5 +1,6 @@
 // ignore_for_file: unnecessary_new
 
+import 'package:capstone_project/screen/user/profile_user.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_verification_code/flutter_verification_code.dart';
@@ -54,9 +55,10 @@ class _VerifikasiPageState extends State<VerifikasiPage> {
                                       BorderRadius.all(Radius.circular(10))),
                               child: Column(
                                 children: <Widget>[
+                                  // ignore: prefer_const_constructors
                                   Padding(
                                     padding: EdgeInsets.only(top: 90),
-                                    child: Center(
+                                    child: const Center(
                                       child: Text(
                                         '',
                                         style: TextStyle(fontSize: 20.0),
@@ -111,7 +113,14 @@ class _VerifikasiPageState extends State<VerifikasiPage> {
                                     ),
                                   ),
                                   ElevatedButton(
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                (ProfileUserScreen()),
+                                          ));
+                                    },
                                     child: Text('Verifikasi'),
                                   ),
                                   SizedBox(
