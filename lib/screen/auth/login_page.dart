@@ -1,5 +1,7 @@
 // ignore_for_file: unnecessary_new, prefer_const_constructors
 
+import 'package:capstone_project/screen/auth/change_password.dart';
+import 'package:capstone_project/screen/auth/forgot_password.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
@@ -60,7 +62,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       controller: _emailController,
                       decoration: const InputDecoration(
                           prefixIcon: Icon(
-                            Icons.mail,
+                            Icons.mail_outline_outlined,
                             color: Colors.black,
                           ),
                           labelText: 'Email',
@@ -79,7 +81,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       obscureText: _isHidden,
                       controller: _passwordController,
                       decoration: InputDecoration(
-                        prefixIcon: const Icon(Icons.lock),
+                        prefixIcon: const Icon(Icons.lock_outline_sharp),
                         labelText: 'Password',
                         suffix: InkWell(
                           onTap: _togglePasswordView,
@@ -101,7 +103,14 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     Container(
                         alignment: Alignment.topRight,
-                        child: const Text('Lupa Password ?')),
+                        child: GestureDetector(
+                          child: const Text('Lupa Password ?'),
+                          onTap: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      ForgotPasswordScreen())),
+                        )),
                     const SizedBox(
                       height: 40,
                     ),
@@ -143,7 +152,13 @@ class _LoginScreenState extends State<LoginScreen> {
                           borderRadius:
                               BorderRadius.all(const Radius.circular(10)),
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      ChangePasswordScreen()));
+                        },
                       ),
                     ),
                     const SizedBox(
