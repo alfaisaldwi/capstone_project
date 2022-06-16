@@ -31,25 +31,25 @@ class _DaftarScreenState extends State<DaftarScreen> {
                     ),
                   ),
                 ]),
-                FutureBuilder<List<FacilityModel>>(
-                  future: futureData,
-                  builder: (context, snapshot) {
-                    if (snapshot.hasData) {
-                      List<FacilityModel>? data = snapshot.data;
-                      return ListView.builder(
-                          shrinkWrap: true,
-                          itemCount: data?.length,
-                          itemBuilder: (BuildContext context, int index) {
-                            return FacilityCard(
-                              futureData: data![index],
-                            );
-                          });
-                    } else if (snapshot.hasError) {
-                      return Text("${snapshot.error}");
-                    }
-                    return const CircularProgressIndicator();
-                  },
-                )
+                // FutureBuilder<List<FacilityModel>>(
+                //   future: futureData,
+                //   builder: (context, snapshot) {
+                //     if (snapshot.hasData) {
+                //       List<FacilityModel>? data = snapshot.data;
+                //       return ListView.builder(
+                //           shrinkWrap: true,
+                //           itemCount: data?.length,
+                //           itemBuilder: (BuildContext context, int index) {
+                //             return FacilityCard(
+                //               futureData: data![index],
+                //             );
+                //           });
+                //     } else if (snapshot.hasError) {
+                //       return Text("${snapshot.error}");
+                //     }
+                //     return const CircularProgressIndicator();
+                //   },
+                // )
               ])
             ),
           ],

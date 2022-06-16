@@ -1,8 +1,8 @@
 // ignore_for_file: unnecessary_const
 
+import 'package:capstone_project/screen/home/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:capstone_project/button.dart';
-import 'package:capstone_project/screen/home/home_screen.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({ Key? key }) : super(key: key);
@@ -52,7 +52,7 @@ class WelcomeScreen extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                       builder: (context){
-                        return const HomeScreen();
+                        return HomeView();
                       },
                     ),
                   );
