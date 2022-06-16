@@ -2,6 +2,7 @@
 
 import 'package:capstone_project/screen/auth/change_password.dart';
 import 'package:capstone_project/screen/auth/forgot_password.dart';
+import 'package:capstone_project/screen/home/home_view.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
@@ -123,10 +124,11 @@ class _LoginScreenState extends State<LoginScreen> {
                         width: 280,
                         child: RawMaterialButton(
                             onPressed: () {
-                              Navigator.push(
+                              Navigator.pushReplacement(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => VerifikasiPage()));
+                                    builder: (context) => HomeView(),
+                                  ));
                             },
                             child: Text('Login',
                                 style:
@@ -137,48 +139,6 @@ class _LoginScreenState extends State<LoginScreen> {
                     const Text('Atau'),
                     const SizedBox(
                       height: 30,
-                    ),
-                    Container(
-                      alignment: AlignmentDirectional.center,
-                      decoration: const BoxDecoration(
-                          color: Color.fromARGB(255, 59, 89, 152),
-                          borderRadius:
-                              BorderRadius.all(const Radius.circular(10))),
-                      height: 40,
-                      width: 280,
-                      child: SignInButton(
-                        Buttons.Facebook,
-                        shape: const RoundedRectangleBorder(
-                          borderRadius:
-                              BorderRadius.all(const Radius.circular(10)),
-                        ),
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      ChangePasswordScreen()));
-                        },
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                          color: Colors.blue.shade700,
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(10))),
-                      height: 40,
-                      width: 280,
-                      child: SignInButton(
-                        Buttons.Google,
-                        shape: const RoundedRectangleBorder(
-                          borderRadius:
-                              BorderRadius.all(const Radius.circular(10)),
-                        ),
-                        onPressed: () {},
-                      ),
                     ),
                     const SizedBox(
                       height: 20,

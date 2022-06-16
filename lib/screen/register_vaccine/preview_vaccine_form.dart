@@ -178,19 +178,6 @@ class _PreviewVaccineFormState extends State<PreviewVaccineForm> {
                       ),
                     ),
                     const SizedBox(
-                      height: 10,
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          colors: [Colors.deepOrangeAccent, Colors.green],
-                        ),
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                      width: 300,
-                      height: 150,
-                    ),
-                    const SizedBox(
                       height: 25,
                     ),
                   ],
