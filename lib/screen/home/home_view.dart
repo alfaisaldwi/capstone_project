@@ -33,168 +33,188 @@ class _HomeViewState extends State<HomeView> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          automaticallyImplyLeading: false,
-          backgroundColor: Colors.blue.shade200,
-          title: Text(
-            'HomeView',
-            style: GoogleFonts.poppins(color: Colors.black),
-          ),
-          centerTitle: true,
-          actions: [
-            IconButton(
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => ProfileView(),
-                    ));
-              },
-              icon: const Icon(Icons.person),
+    return Container(
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          stops: [0.09, 0.44],
+          colors: [Color(0xFF1789BC), Color(0xFFFFFFFF)]
+        )
+      ),
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+          appBar: AppBar(
+            // automaticallyImplyLeading: true,
+            backgroundColor: Color(0xFF1789BC),
+            title: Text(
+              'HomeView',
+              style: GoogleFonts.poppins(color: Colors.black),
             ),
-          ],
-        ),
-        body: SingleChildScrollView(
-            child: Column(children: [
-          CarouselSlider(
-            options: CarouselOptions(
-              height: 200.0,
-              autoPlay: true,
-              autoPlayInterval: Duration(seconds: 3),
-              autoPlayAnimationDuration: Duration(milliseconds: 800),
-              autoPlayCurve: Curves.fastOutSlowIn,
-              pauseAutoPlayOnTouch: true,
-              aspectRatio: 2.0,
-              onPageChanged: (index, reason) {
-                setState(() {
-                  _currentIndex = index;
+            centerTitle: true,
+            actions: [
+              IconButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ProfileView(),
+                      ));
+                },
+                icon: const Icon(Icons.person),
+              ),
+            ],
+          ),
+          body: SingleChildScrollView(
+              child: Column(children: [
+            CarouselSlider(
+              options: CarouselOptions(
+                height: 200.0,
+                autoPlay: true,
+                autoPlayInterval: Duration(seconds: 3),
+                autoPlayAnimationDuration: Duration(milliseconds: 800),
+                autoPlayCurve: Curves.fastOutSlowIn,
+                pauseAutoPlayOnTouch: true,
+                aspectRatio: 2.0,
+                onPageChanged: (index, reason) {
+                  setState(() {
+                    _currentIndex = index;
+                  });
+                },
+              ),
+              items: cardList.map((card) {
+                return Builder(builder: (BuildContext context) {
+                  return Container(
+                    height: MediaQuery.of(context).size.height * 0.30,
+                    width: MediaQuery.of(context).size.width,
+                    child: Card(
+                      color: Colors.blueAccent,
+                      child: card,
+                    ),
+                  );
                 });
-              },
+              }).toList(),
             ),
-            items: cardList.map((card) {
-              return Builder(builder: (BuildContext context) {
-                return Container(
-                  height: MediaQuery.of(context).size.height * 0.30,
-                  width: MediaQuery.of(context).size.width,
-                  child: Card(
-                    color: Colors.blueAccent,
-                    child: card,
-                  ),
-                );
-              });
-            }).toList(),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              children: [
-                FeatureCard(
-                    title: "Daftar Vaksin",
-                    text:
-                        "Daftarkan diri anda untuk memperoleh vaksinasi secara mudah di lokasi terdekat",
-                    press: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => ListVaccineView()),
-                      );
-                    }),
-                FeatureCard(
-                    title: "Cek Status Pendaftaran",
-                    text:
-                        "Setelah melakukan pendaftaran, silahkan cek no antrian disini.",
-                    press: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) {
-                            return CekStatusView();
-                          },
-                        ),
-                      );
-                    }),
-                FeatureCard(
-                    title: "Cek Sertifikat",
-                    text:
-                        "Setelah melakukan vaksin , anda dapat cek sertifikat vaksin disini.",
-                    press: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) {
-                            return CertificateView();
-                          },
-                        ),
-                      );
-                    }),
-              ],
-            ),
-          ),
-          const SizedBox(height: 20),
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Container(
-              margin: const EdgeInsets.only(
-                left: 20.0,
-              ),
-              child: Text(
-                "Seputar Vaksin",
-                style: GoogleFonts.poppins(
-                    color: Colors.black, fontWeight: FontWeight.bold),
-              ),
-            ),
-          ),
-          const SizedBox(height: 20),
-          SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Padding(
+            Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const SizedBox(width: 5),
-                    InfoCard(
-                        title: "Bagaimana cara kerja vaksin?",
-                        press: () {
-                          showModalBottomSheet(
-                            shape: const RoundedRectangleBorder(
-                              borderRadius: BorderRadius.vertical(
-                                top: Radius.circular(40)
-                              ),
-                            ),
-                            builder: (context) => Article1View(),
-                            context: context,
-                          );
-                        }),
-                    const SizedBox(width: 5),
-                    InfoCard(
-                        title: "Tentang vaksin Sinovac",
-                        press: () {
-                          showModalBottomSheet(
-                            shape: const RoundedRectangleBorder(
-                              borderRadius: BorderRadius.vertical(
-                                top: Radius.circular(40)
-                              ),
-                            ),
-                            builder: (context) => Article2View(),
-                            context: context,
-                          );
-                        }),
-                    const SizedBox(width: 5),
-                    InfoCard(
-                        title: "Bagaimana cara kerja vaksin?",
-                        press: () {}),
-                    const SizedBox(width: 5),
-                    InfoCard(
-                        title: "Bagaimana cara kerja vaksin?",
-                        press: () {}),
-                    const SizedBox(width: 5),
-                  ]),
+              child: Column(
+                children: [
+                  FeatureCard(
+                      title: "Daftar Vaksin",
+                      text:
+                          "Daftarkan diri anda untuk memperoleh vaksinasi secara mudah di lokasi terdekat",
+                      gradient1: Color.fromARGB(132, 151, 71, 255),
+                      gradient2: Color.fromARGB(113, 23, 136, 188),
+                      textColor: Color.fromARGB(255, 0, 0, 0),
+                      press: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ListVaccineView()),
+                        );
+                      }),
+                  FeatureCard(
+                      title: "Cek Status Pendaftaran",
+                      text:
+                          "Setelah melakukan pendaftaran, silahkan cek no antrian disini.",
+                      gradient1: Color(0xFFB6E9FF),
+                      gradient2: Color(0xFFB6E9FF),
+                      textColor: Color.fromARGB(125, 0, 0, 0),
+                      press: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return CekStatusView();
+                            },
+                          ),
+                        );
+                      }),
+                  FeatureCard(
+                      title: "Cek Sertifikat",
+                      text:
+                          "Setelah melakukan vaksin , anda dapat cek sertifikat vaksin disini.",
+                      gradient1: Color(0xFFB6E9FF),
+                      gradient2: Color(0xFFB6E9FF),
+                      textColor: Color.fromARGB(125, 0, 0, 0),
+                      press: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return CertificateView();
+                            },
+                          ),
+                        );
+                      }),
+                ],
+              ),
             ),
-          ),
-          const SizedBox(height: 20),
-        ])));
+            const SizedBox(height: 10),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Container(
+                margin: const EdgeInsets.only(
+                  left: 20.0,
+                ),
+                child: Text(
+                  "Seputar Vaksin",
+                  style: GoogleFonts.poppins(
+                      color: Colors.black, fontWeight: FontWeight.bold),
+                ),
+              ),
+            ),
+            const SizedBox(height: 10),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const SizedBox(width: 5),
+                      InfoCard(
+                          title: "Bagaimana cara kerja vaksin?",
+                          press: () {
+                            showModalBottomSheet(
+                              shape: const RoundedRectangleBorder(
+                                borderRadius: BorderRadius.vertical(
+                                  top: Radius.circular(40)
+                                ),
+                              ),
+                              builder: (context) => Article1View(),
+                              context: context,
+                            );
+                          }),
+                      const SizedBox(width: 5),
+                      InfoCard(
+                          title: "Tentang vaksin Sinovac",
+                          press: () {
+                            showModalBottomSheet(
+                              shape: const RoundedRectangleBorder(
+                                borderRadius: BorderRadius.vertical(
+                                  top: Radius.circular(40)
+                                ),
+                              ),
+                              builder: (context) => Article2View(),
+                              context: context,
+                            );
+                          }),
+                      const SizedBox(width: 5),
+                      InfoCard(
+                          title: "Bagaimana cara kerja vaksin?",
+                          press: () {}),
+                      const SizedBox(width: 5),
+                      InfoCard(
+                          title: "Bagaimana cara kerja vaksin?",
+                          press: () {}),
+                      const SizedBox(width: 5),
+                    ]),
+              ),
+            ),
+            const SizedBox(height: 20),
+          ]))),
+    );
   }
 }
 
@@ -202,12 +222,14 @@ class FeatureCard extends StatelessWidget {
   final String title;
   final String text;
   final VoidCallback? press;
-  final Color color, textColor;
+  final Color color, textColor, gradient1, gradient2;
   const FeatureCard(
       {Key? key,
       required this.title,
       required this.text,
       required this.press,
+      required this.gradient1,
+      required this.gradient2,
       this.color = kPrimaryColor,
       this.textColor = Colors.white})
       : super(key: key);
@@ -219,27 +241,17 @@ class FeatureCard extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.only(bottom: 10),
         child: SizedBox(
-          height: 140,
+          height: 95,
           child: Stack(
             alignment: Alignment.centerLeft,
             children: <Widget>[
               Container(
-                height: 136,
-                width: double.infinity,
-                // child: ElevatedButton(
-                //   // style: ElevatedButton.styleFrom(
-                //   //   primary: color,
-                //   //   padding: const EdgeInsets.symmetric(vertical:20, horizontal: 40),
-                //   //   textStyle: TextStyle(
-                //   //     color: textColor, fontSize: 14, fontWeight: FontWeight.w500),
-                //   // ),
-                //   child: Container(),
-                //   onPressed: press,
-                // ),
+                width: 362,
+                height: 88,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
-                  gradient: const LinearGradient(
-                      colors: [Color(0xFFE4F7FF), Color(0xFFC1C0FF)]),
+                  gradient: LinearGradient(
+                      colors: [gradient1, gradient2]),
                   boxShadow: [
                     BoxShadow(
                       offset: const Offset(0, 8),
