@@ -155,13 +155,12 @@ class _HomeViewState extends State<HomeView> {
                   children: [
                     const SizedBox(width: 5),
                     InfoCard(
-                        image: "",
                         title: "Bagaimana cara kerja vaksin?",
                         press: () {
                           showModalBottomSheet(
                             shape: const RoundedRectangleBorder(
                               borderRadius: BorderRadius.vertical(
-                                top: Radius.circular(50)
+                                top: Radius.circular(40)
                               ),
                             ),
                             builder: (context) => Article1View(),
@@ -170,13 +169,12 @@ class _HomeViewState extends State<HomeView> {
                         }),
                     const SizedBox(width: 5),
                     InfoCard(
-                        image: "",
-                        title: "Bagaimana cara kerja vaksin?",
+                        title: "Tentang vaksin Sinovac",
                         press: () {
                           showModalBottomSheet(
                             shape: const RoundedRectangleBorder(
                               borderRadius: BorderRadius.vertical(
-                                top: Radius.circular(50)
+                                top: Radius.circular(40)
                               ),
                             ),
                             builder: (context) => Article2View(),
@@ -185,12 +183,10 @@ class _HomeViewState extends State<HomeView> {
                         }),
                     const SizedBox(width: 5),
                     InfoCard(
-                        image: "",
                         title: "Bagaimana cara kerja vaksin?",
                         press: () {}),
                     const SizedBox(width: 5),
                     InfoCard(
-                        image: "",
                         title: "Bagaimana cara kerja vaksin?",
                         press: () {}),
                     const SizedBox(width: 5),
@@ -300,13 +296,11 @@ class FeatureCard extends StatelessWidget {
 }
 
 class InfoCard extends StatelessWidget {
-  final String image;
   final String title;
   final bool isActive;
   final VoidCallback? press;
   const InfoCard({
     Key? key,
-    required this.image,
     required this.title,
     required this.press,
     this.isActive = false,
@@ -321,25 +315,26 @@ class InfoCard extends StatelessWidget {
         height: 145,
         width: 148,
         decoration: BoxDecoration(
+          image: DecorationImage(image: NetworkImage("https://s3-alpha-sig.figma.com/img/ac8d/80b9/4280245671bc75bd135e726d7990e5c6?Expires=1656288000&Signature=fqXXkg008kkg7gzAiKQlgg29s1X3E3nffxtpP~hCiPJWxfP40iKkl7APbU5McY1WDjuuqO5ec-se-VevVzn-LWCPmhvdIgaR7XlzMLVb5mHEG4gUdvg6~mBXus11IUsmvWt03gjnchXeO-N7IlWTgwoadj9D32lLiDXxVx6-9AW9T-3STSRRZkHojujOZQW95LUVBto7dhL3QlQhGh6UUCSqHBLskj7WrzXxKKH09Xq4-MqdR9wKGd-pf2bl~FCgmYvhJQd9wmQCzuf5QQdIJjhN198IpmqG1e3nygkwLfkCB7v1c-mIAcqSTVNiHgfRu8sXk-2sosbVvIzgEWepwA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"),),
+          border: Border.all(color : Color(0xFFC1E9FF)),
           borderRadius: BorderRadius.circular(10),
-          color: const Color(0xFFD9D9D9),
+          color: const Color(0xFFFFFFFF),
           boxShadow: [
             isActive
-                ? BoxShadow(
-                    offset: const Offset(0, 10),
-                    blurRadius: 20,
-                    color: kActiveShadowColor,
-                  )
-                : BoxShadow(
-                    offset: const Offset(0, 3),
-                    blurRadius: 6,
-                    color: kShadowColor,
-                  ),
+              ? BoxShadow(
+                offset: const Offset(0, 10),
+                blurRadius: 20,
+                color: kActiveShadowColor,
+              )
+              : BoxShadow(
+                offset: const Offset(0, 3),
+                blurRadius: 6,
+                color: kShadowColor,
+              ),
           ],
         ),
         child: Column(
           children: <Widget>[
-            // Image.asset(image, height: 90),
             Text(
               title,
               maxLines: 2,

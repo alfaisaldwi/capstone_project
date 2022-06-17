@@ -11,8 +11,8 @@ const kTreatedColor = Color.fromARGB(255, 239, 255, 15);
 const kInfectedColor = Color.fromARGB(255, 255, 139, 72);
 const kDeathColor = Color(0xFFFF4848);
 const kRecoverColor = Color(0xFF36C12C);
-final kShadowColor = const Color(0xFFB7B7B7).withOpacity(.16);
-final kActiveShadowColor = const Color(0xFF4056C6).withOpacity(.15);
+final kShadowColor = const Color(0xFFC1E9FF).withOpacity(.16);
+final kActiveShadowColor = const Color(0xFFC1E9FF).withOpacity(.15);
 
 // Text Style
 const kHeadingTextStyle = TextStyle(

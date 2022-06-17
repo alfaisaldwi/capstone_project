@@ -59,11 +59,11 @@ class _StatusViewState extends State<StatusView> {
                         padding: const EdgeInsets.only(top: 12),
                         child: Container(
                           alignment: Alignment.center,
-                          width: 330,
+                          width: 340,
                           height: 30,
                           decoration: BoxDecoration(
                               color: Colors.blue,
-                              borderRadius: BorderRadius.all(Radius.circular(5))),
+                              borderRadius: BorderRadius.all(Radius.circular(10))),
                           child: Text(
                             "No. Antrian",
                             style: GoogleFonts.poppins(
@@ -127,26 +127,6 @@ class _StatusViewState extends State<StatusView> {
                           ],
                         ),
                       ),
-                      // Align(
-                      //   alignment: Alignment.bottomRight,
-                      //   child: Padding(
-                      //     padding: EdgeInsets.only(right: 28),
-                      //     child: ElevatedButton(
-                      //       onPressed: () {
-                      //         Navigator.push(
-                      //           context,
-                      //           MaterialPageRoute(
-                      //             builder: (context) => PreviewStatus(),
-                      //           )
-                      //         );
-                      //       },
-                      //       child: Text('Daftar'),
-                      //     ),
-                      //   ),
-                      // ),
-                      // const SizedBox(
-                      //   height: 20,
-                      // ),
                     ],
                   ),
                 ),

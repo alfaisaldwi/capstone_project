@@ -45,19 +45,6 @@ class _CekStatusViewState extends State<CekStatusView> {
                         ),
                       ))),
               const SizedBox(
-                height: 20,
-              ),
-              SizedBox(
-                width: double.infinity,
-                child: Container(
-                  child: Text(
-                    "Sesi Tersedia",
-                    style: GoogleFonts.poppins(fontWeight: FontWeight.bold),
-                    textAlign: TextAlign.left,
-                  ),
-                ),
-              ),
-              const SizedBox(
                 height: 30,
               ),
               Card(
@@ -74,11 +61,11 @@ class _CekStatusViewState extends State<CekStatusView> {
                       padding: const EdgeInsets.only(top: 12),
                       child: Container(
                         alignment: Alignment.center,
-                        width: 330,
+                        width: 340,
                         height: 30,
                         decoration: BoxDecoration(
                             color: Colors.blue,
-                            borderRadius: BorderRadius.all(Radius.circular(5))),
+                            borderRadius: BorderRadius.all(Radius.circular(10))),
                         child: Text(
                           "RS. Cipto Mangunkusumo",
                           style: GoogleFonts.poppins(

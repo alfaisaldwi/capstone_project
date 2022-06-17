@@ -44,11 +44,11 @@ class _PreviewStatusState extends State<PreviewStatus> {
                       padding: const EdgeInsets.only(top: 12),
                       child: Container(
                         alignment: Alignment.center,
-                        width: 330,
+                        width: 340,
                         height: 30,
                         decoration: BoxDecoration(
                             color: Colors.blue,
-                            borderRadius: BorderRadius.all(Radius.circular(5))),
+                            borderRadius: BorderRadius.all(Radius.circular(10))),
                         child: Text(
                           "RS. Cipto Mangunkusumo",
                           style: GoogleFonts.poppins(
