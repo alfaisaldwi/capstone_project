@@ -1,16 +1,17 @@
 // ignore_for_file: unnecessary_const
 
+import 'package:capstone_project/screen/auth/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class ProfileUserScreen extends StatefulWidget {
-  ProfileUserScreen({Key? key}) : super(key: key);
+class ProfileView extends StatefulWidget {
+  ProfileView({Key? key}) : super(key: key);
 
   @override
-  State<ProfileUserScreen> createState() => _ProfileUserScreenState();
+  State<ProfileView> createState() => _ProfileViewState();
 }
 
-class _ProfileUserScreenState extends State<ProfileUserScreen> {
+class _ProfileViewState extends State<ProfileView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -92,8 +93,15 @@ class _ProfileUserScreenState extends State<ProfileUserScreen> {
                                   trailing: Icon(Icons.arrow_forward_outlined),
                                 ),
                                 ListTile(
-                                  title: Text('Logout'),
-                                ),
+                                    title: Text('Logout'),
+                                    onTap: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => LoginScreen(),
+                                        ),
+                                      );
+                                    }),
                               ]),
                         )
                       ]))

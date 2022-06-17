@@ -1,4 +1,5 @@
 import 'package:capstone_project/component/splashscreen.dart';
+import 'package:capstone_project/screen/home/home_view.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -16,6 +17,9 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: SplashScreenPage());
+        routes: {
+          '/HomePage': (context) => HomeView(),
+        },
+        home: HomeView());
   }
 }

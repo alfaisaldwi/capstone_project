@@ -1,5 +1,6 @@
 // ignore_for_file: unnecessary_new
 
+import 'package:capstone_project/screen/home/home_view.dart';
 import 'package:capstone_project/screen/user/profile_user.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -118,7 +119,7 @@ class _VerifikasiPageState extends State<VerifikasiPage> {
                                           context,
                                           MaterialPageRoute(
                                             builder: (context) =>
-                                                (ProfileUserScreen()),
+                                                (HomeView()),
                                           ));
                                     },
                                     child: Text('Verifikasi'),
