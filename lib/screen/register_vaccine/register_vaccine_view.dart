@@ -1,9 +1,12 @@
 // ignore_for_file: unnecessary_const
 
 import 'package:capstone_project/screen/register_vaccine/register_vaccine_form_view.dart';
+import 'package:capstone_project/screen/register_vaccine/register_vaccine_list.dart';
 import 'package:flutter/material.dart';
+import 'package:capstone_project/model/register_manager.dart';
 
 import 'package:get/get.dart';
+import 'package:provider/provider.dart';
 
 class RegisterVaccineView extends StatefulWidget {
   RegisterVaccineView({Key? key}) : super(key: key);
@@ -62,5 +65,28 @@ class _RegisterVaccineViewState extends State<RegisterVaccineView> {
             )
           ],
         ));
+  }
+
+  Widget buildTaskScreen() {
+    return Consumer<RegisterVaccineManager>(builder: (context, manager, child) {
+      if (manager.registerVaccineModel.isNotEmpty) {
+        return RegisterVaccineList(
+          manager: manager,
+        );
+      } else {
+        return const EmptyScreen();
+      }
+    });
+  }
+}
+
+class EmptyScreen extends StatelessWidget {
+  const EmptyScreen({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.amber,
+    );
   }
 }

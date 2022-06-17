@@ -1,4 +1,4 @@
-class SessionModel{
+class RegisterVaccineModel{
   final String name;
   final String location;
   final String date;
@@ -6,7 +6,7 @@ class SessionModel{
   final String vaccine;
   final String stock;
   
-  SessionModel(
+  RegisterVaccineModel(
     this.name,
     this.location,
     this.date,
