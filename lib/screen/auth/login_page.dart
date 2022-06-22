@@ -8,7 +8,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:capstone_project/screen/auth/signup_screen.dart';
-import 'package:capstone_project/screen/auth/verifikasi_page.dart';
 
 class LoginScreen extends StatefulWidget {
   LoginScreen({Key? key}) : super(key: key);

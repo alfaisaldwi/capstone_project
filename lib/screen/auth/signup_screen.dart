@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_unnecessary_containers, unnecessary_new, unnecessary_null_comparison, sized_box_for_whitespace
+
 import 'package:capstone_project/screen/auth/login_page.dart';
 import 'package:flutter/gestures.dart';
 
@@ -25,7 +27,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return new Scaffold(
         resizeToAvoidBottomInset: false,
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

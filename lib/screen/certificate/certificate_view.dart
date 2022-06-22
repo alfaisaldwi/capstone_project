@@ -1,6 +1,8 @@
-import 'package:flutter/material.dart';
+// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
-import 'package:get/get.dart';
+import 'package:capstone_project/screen/certificate/certificate.dart';
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class CertificateView extends StatefulWidget {
   CertificateView({Key? key}) : super(key: key);
@@ -12,17 +14,33 @@ class CertificateView extends StatefulWidget {
 class _CertificateViewState extends State<CertificateView> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      // appBar: AppBar(
-      //   title: const Text('Cek Sertifikat'),
-      // ),
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: ListView(
-          children: [
-            buildNIKField(),
-            buildButton(),
-          ],
+    return Container(
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          stops: [0.0, 1],
+          colors: [Color(0xFFFFFFFF), Color(0xFFE3F5FD)]
+        )
+      ),
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        appBar: AppBar(
+          title: Text('Cek Sertifikat',
+            style: GoogleFonts.poppins(
+              color: Colors.white
+            ),
+          ),
+          centerTitle: true,
+        ),
+        body: Padding(
+          padding: const EdgeInsets.all(16),
+          child: ListView(
+            children: [
+              buildNIKField(),
+              buildButton(context),
+            ],
+          ),
         ),
       ),
     );
@@ -31,7 +49,12 @@ class _CertificateViewState extends State<CertificateView> {
   Widget buildNIKField() {
     final _certiController = TextEditingController();
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      const Text('Cek Sertifikat'),
+      Text(
+        'NIK',
+        style: GoogleFonts.poppins(
+          color: Colors.black
+        ),
+      ),
       const SizedBox(
         height: 8,
       ),
@@ -39,17 +62,17 @@ class _CertificateViewState extends State<CertificateView> {
         controller: _certiController,
         cursorColor: Colors.black,
         decoration: const InputDecoration(
-          hintText: '',
+          hintText: 'Masukkan NIK',
           enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(color: Colors.black),
             borderRadius: BorderRadius.all(
-              Radius.circular(10),
+              Radius.circular(15),
             ),
           ),
           focusedBorder: OutlineInputBorder(
             borderSide: BorderSide(color: Colors.black),
             borderRadius: BorderRadius.all(
-              Radius.circular(10),
+              Radius.circular(15),
             ),
           ),
         ),
@@ -57,42 +80,33 @@ class _CertificateViewState extends State<CertificateView> {
     ]);
   }
 
-  Widget buildButton() {
-    return Positioned(
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-        height: 136,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            ElevatedButton(
-              child: const Text('Lanjut'),
-              onPressed: () {},
-            ),
-            // Text(
-            //   title,
-            //   style: kTitleTextstyle.copyWith(
-            //     fontSize: 16,
-            //   ),
-            // ),
-            // Expanded(
-            //   child: Text(
-            //     text,
-            //     maxLines: 4,
-            //     overflow: TextOverflow.ellipsis,
-            //     style: const TextStyle(
-            //       fontSize: 12,
-            //     ),
-            //   ),
-            // ),
-          ],
-        ),
-      ),
+  Widget buildButton(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 10),
+      child: ClipRRect(
+        child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15),),
+            side: BorderSide(color : Color(0xFF1789BC), width: 1),
+            primary: Color.fromARGB(255, 255, 255, 255),
+            padding: const EdgeInsets.symmetric(vertical:20, horizontal: 40),
+          ),
+          child: Text(
+            'Lanjut',
+            style: TextStyle(color: Color(0xFF1789BC), fontSize: 14, fontWeight: FontWeight.w500),
+          ),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) {
+                  return Certificate();
+                },
+              ),
+            );
+          },
+        )
+      )
     );
-    // ElevatedButton(
-    //   child: const Text('Lanjut'),
-    //   onPressed: () {},
-    // );
   }
 }
