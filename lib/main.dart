@@ -15,8 +15,11 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
+            primarySwatch: Colors.blue,
+            checkboxTheme: CheckboxThemeData(
+              checkColor: MaterialStateProperty.all(Colors.white),
+              fillColor: MaterialStateProperty.all(Colors.blue),
+            )),
         routes: {
           '/HomePage': (context) => HomeView(),
         },
