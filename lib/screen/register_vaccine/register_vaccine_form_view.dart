@@ -4,6 +4,7 @@ import 'package:capstone_project/screen/register_vaccine/preview_vaccine_form.da
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:capstone_project/screen/register_vaccine/model_register_vaccine_form_view.dart';
 
 class RegisterVaccineFormView extends StatefulWidget {
   RegisterVaccineFormView({Key? key}) : super(key: key);
@@ -22,7 +23,9 @@ class _RegisterVaccineFormViewState extends State<RegisterVaccineFormView> {
   TextEditingController alamat = TextEditingController();
   TextEditingController nohp = TextEditingController();
   TextEditingController email = TextEditingController();
+  TextEditingController jenisvaksin = TextEditingController();
 
+  String selectedValue = "USA";
   @override
   void initState() {
     dateinput.text = ""; //set the initial value of text field
@@ -33,15 +36,13 @@ class _RegisterVaccineFormViewState extends State<RegisterVaccineFormView> {
   Widget build(BuildContext context) {
     return Container(
       decoration: const BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-          stops: [0.0, 1],
-          colors: [Color(0xFFFFFFFF), Color(0xFFE3F5FD)]
-        )
-      ),
+          gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              stops: [0.0, 1],
+              colors: [Color(0xFFFFFFFF), Color(0xFFE3F5FD)])),
       child: Scaffold(
-        backgroundColor: Colors.transparent,
+          backgroundColor: Colors.transparent,
           appBar: AppBar(
             title: Text('Pendaftaran Vaksin'),
             centerTitle: true,
@@ -215,6 +216,80 @@ class _RegisterVaccineFormViewState extends State<RegisterVaccineFormView> {
                     height: 15,
                   ),
                   Text('Vaksinasi ke : '),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Row(
+                    children: [
+                      Container(
+                        height: 25,
+                        width: 25,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(6),
+                          border: Border.all(
+                            color: Colors.black,
+                            width: 2,
+                          ),
+                        ),
+                        child: Center(
+                            child: Text("1", style: TextStyle(fontSize: 10))),
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      Container(
+                        height: 25,
+                        width: 25,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(6),
+                          border: Border.all(
+                            color: Colors.black,
+                            width: 2,
+                          ),
+                        ),
+                        child: Center(
+                            child: Text("2", style: TextStyle(fontSize: 10))),
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      Container(
+                        height: 25,
+                        width: 25,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(6),
+                          border: Border.all(
+                            color: Colors.black,
+                            width: 2,
+                          ),
+                        ),
+                        child: Center(
+                            child: Text("3", style: TextStyle(fontSize: 10))),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  DropdownButtonFormField(
+                      decoration: InputDecoration(
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.black, width: 2),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.black, width: 2),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                      dropdownColor: Colors.white,
+                      value: selectedValue,
+                      onChanged: (String? newValue) {
+                        setState(() {
+                          selectedValue = newValue!;
+                        });
+                      },
+                      items: dropdownItems),
                   const SizedBox(
                     height: 45,
                   ),

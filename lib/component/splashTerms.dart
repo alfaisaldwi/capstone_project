@@ -1,3 +1,5 @@
+import 'package:capstone_project/component/term_privacy.dart';
+import 'package:capstone_project/component/terms_page.dart';
 import 'package:capstone_project/screen/auth/login_page.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
@@ -68,47 +70,77 @@ class _SplashTermsState extends State<SplashTerms> {
                       'Lihat Syarat Penggunaan dan Kebijakan Privasi di sini : ',
                       style: GoogleFonts.poppins(fontSize: 12),
                     ),
-                    Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                      Text('Syarat Penggunaan',
-                          style: GoogleFonts.poppins(
-                              color: Colors.blue, fontSize: 12)),
-                      Checkbox(
-                        value: _checkbox,
-                        onChanged: (value) {
-                          setState(() {
-                            _checkbox = !_checkbox;
-                          });
-                        },
-                      ),
-                    ]),
-                    Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                      Text(
-                        'Kebijakan Privasi',
-                        style: GoogleFonts.poppins(
-                            color: Colors.blue, fontSize: 12),
-                      ),
-                      Checkbox(
-                        value: _checkbox2,
-                        onChanged: (value) {
-                          setState(() {
-                            _checkbox2 = !_checkbox2;
-                          });
-                        },
-                      ),
-                    ]),
+                    Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => TermsPage()));
+                            },
+                            child: Text('Syarat Penggunaan',
+                                style: GoogleFonts.poppins(
+                                    color: Colors.blue, fontSize: 12)),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 10.0),
+                            child: Checkbox(
+                              value: _checkbox,
+                              onChanged: (value) {
+                                setState(() {
+                                  _checkbox = !_checkbox;
+                                });
+                              },
+                            ),
+                          ),
+                        ]),
+                    Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          GestureDetector(
+                            onTap: () => Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => TermsPrivacy(),
+                                )),
+                            child: Text(
+                              'Kebijakan Privasi',
+                              style: GoogleFonts.poppins(
+                                  color: Colors.blue, fontSize: 12),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 24.0),
+                            child: Checkbox(
+                              value: _checkbox2,
+                              onChanged: (value) {
+                                setState(() {
+                                  _checkbox2 = !_checkbox2;
+                                });
+                              },
+                            ),
+                          ),
+                        ]),
                     Text(
                       'Dengan menyatakan “Setuju”, maka Anda menerima segala isi Syarat Penggunaan dan Kebijakan Privasi yang berlaku.',
                       style: GoogleFonts.poppins(fontSize: 12),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     ElevatedButton(
-                      onPressed: () => (Navigator.push(
+                      onPressed: () => 
+                      (
+                        Navigator.push( 
                           context,
                           MaterialPageRoute(
                               builder: (context) => LoginScreen()))),
-                      child: Text('Setuju'),
+                              
+                      child: const Text('Setuju'),
                     )
                   ],
                 ),
