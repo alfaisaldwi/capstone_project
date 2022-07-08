@@ -1,7 +1,12 @@
 // ignore_for_file: unnecessary_const
 
+import 'dart:convert';
+
 import 'package:capstone_project/screen/auth/login_page.dart';
+import 'package:capstone_project/screen/user/profile_model.dart';
+import 'package:capstone_project/screen/user/test.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 import 'package:google_fonts/google_fonts.dart';
 
 class ProfileView extends StatefulWidget {
@@ -12,8 +17,29 @@ class ProfileView extends StatefulWidget {
 }
 
 class _ProfileViewState extends State<ProfileView> {
+  // Future<User> fetchUser() async {
+  //   final response =
+  //       await http.get(Uri.parse('https://jsonplaceholder.typicode.com/posts'));
+  //   if (response.statusCode == 200) {
+  //     print('ada');
+  //     return User.fromJson(jsonDecode(response.body));
+  //   } else {
+  //     print('gada');
+  //     throw Exception('Failed to load album');
+  //   }
+  // }
+
+  // late Future<User> futureUser;
+
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   futureUser = fetchUser();
+  // }
+
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
         body: Scaffold(
             resizeToAvoidBottomInset: false,
@@ -81,6 +107,11 @@ class _ProfileViewState extends State<ProfileView> {
                                   trailing: Icon(Icons.arrow_forward_outlined),
                                 ),
                                 ListTile(
+                                  onTap: () => (Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => Testing(),
+                                      ))),
                                   title: Text('Tentang I-Vaksin'),
                                   trailing: Icon(Icons.arrow_forward_outlined),
                                 ),

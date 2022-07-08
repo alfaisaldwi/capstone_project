@@ -140,7 +140,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   _usernameController.text,
                                   _emailController.text,
                                   _passwordController.text,
-                                  Role(id: 1, name: "admin"));
+                                  Role(id: 0,name: "user"));
                               print(signUpViewModel.createDataUsers);
                             },
                             child: Text('Registrasi',
