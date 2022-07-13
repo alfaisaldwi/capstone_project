@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:capstone_project/model/role_model.dart';
 import 'package:capstone_project/screen/auth/login_page.dart';
-import 'package:capstone_project/screen/auth/sign_up_model.dart';
+import 'package:capstone_project/screen/auth/user_model.dart';
 import 'package:capstone_project/screen/auth/sign_up_view_model.dart';
 import 'package:flutter/gestures.dart';
 import 'package:http/http.dart' as http;
@@ -21,7 +21,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final TextEditingController _passwordController = TextEditingController();
   SignUpViewModel signUpViewModel = SignUpViewModel();
   bool _isHidden = true;
-  Future<User>? user;
+  User? user;
   void _togglePasswordView() {
     setState(() {
       _isHidden = !_isHidden;
@@ -130,26 +130,24 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         height: 40,
                         width: 280,
                         child: RawMaterialButton(
-                            onPressed: () {
+                            onPressed: () async {
+                              // setState(() {
+                              //   user = signUpViewModel.createDataUsers(
+                              //       _usernameController.text,
+                              //       _emailController.text,
+                              //       _passwordController.text,);
+                              // });
+
+                              User? result =
+                                  await signUpViewModel.createDataUsers(
+                                _usernameController.text,
+                                _emailController.text,
+                                _passwordController.text,
+                              );
+
                               setState(() {
-                                user = signUpViewModel.createDataUsers(
-                                    _usernameController.text,
-                                    _emailController.text,
-                                    _passwordController.text,
-                                    Role(id: 1, name: "admin"));
+                                user = result;
                               });
-
-                              // User? result =
-                              //     await signUpViewModel.createDataUsers(
-                              //         _usernameController.text,
-                              //         _emailController.text,
-                              //         _passwordController.text,
-                              //         Role(id: 1, name: "admin"));
-
-                              //   setState(() {
-                              //     user = result;
-                              //   });
-                              // }
                             },
                             child: Text('Registrasi',
                                 style:

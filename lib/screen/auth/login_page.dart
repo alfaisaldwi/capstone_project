@@ -1,7 +1,10 @@
 // ignore_for_file: unnecessary_new, prefer_const_constructors
 
+import 'package:capstone_project/screen/auth/api_cilent.dart';
 import 'package:capstone_project/screen/auth/change_password.dart';
 import 'package:capstone_project/screen/auth/forgot_password.dart';
+import 'package:capstone_project/screen/auth/login_view_model.dart';
+import 'package:capstone_project/screen/auth/user_model.dart';
 import 'package:capstone_project/screen/home/home_view.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +23,9 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   bool _isHidden = true;
-
+  User? user;
+  LoginViewModel loginViewModel = LoginViewModel();
+  // ApiClient? _api;
   void _togglePasswordView() {
     setState(() {
       _isHidden = !_isHidden;
@@ -122,7 +127,11 @@ class _LoginScreenState extends State<LoginScreen> {
                         height: 40,
                         width: 280,
                         child: RawMaterialButton(
-                            onPressed: () {
+                            onPressed: () async {
+                              await loginViewModel.loginUser(
+                                _emailController.text,
+                                _passwordController.text,
+                              );
                               Navigator.pushReplacement(
                                   context,
                                   MaterialPageRoute(
