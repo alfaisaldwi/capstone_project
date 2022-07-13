@@ -1,9 +1,9 @@
 class Role {
-  final int? id;
+  int id;
   final String? name;
 
   Role({
-    this.id,
+    required this.id,
     this.name,
   });
 
@@ -14,7 +14,7 @@ class Role {
     );
   }
 
-  Map toJson() => {
+  Map<String, dynamic> toJson() => {
         'id': id,
         'name': name,
       };

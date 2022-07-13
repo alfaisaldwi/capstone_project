@@ -135,12 +135,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         width: 280,
                         child: RawMaterialButton(
                             onPressed: () {
-                              futureUser = signUpViewModel.createDataUsers(
-                                  1,
-                                  _usernameController.text,
-                                  _emailController.text,
-                                  _passwordController.text,
-                                  Role(id: 0,name: "user"));
+                              // futureUser = signUpViewModel.createDataUsers(
+                              //     1,
+                              //     _usernameController.text,
+                              //     _emailController.text,
+                              //     _passwordController.text,
+                              //     Role(id: 0,name: "user"));
                               print(signUpViewModel.createDataUsers);
                             },
                             child: Text('Registrasi',
