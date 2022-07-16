@@ -18,6 +18,7 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends State<HomeView> {
   int _currentIndex = 0;
+  String url = "http://13.57.43.205/user/news";
   List cardList = [
     Image.network("https://images.unsplash.com/photo-1547721064-da6cfb341d50"),
     Image.network("https://picsum.photos/id/237/200/300"),

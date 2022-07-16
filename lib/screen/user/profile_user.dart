@@ -3,6 +3,7 @@
 import 'dart:convert';
 
 import 'package:capstone_project/screen/auth/login_page.dart';
+import 'package:capstone_project/screen/auth/login_view_model.dart';
 import 'package:capstone_project/screen/user/profile_model.dart';
 import 'package:capstone_project/screen/user/test.dart';
 import 'package:flutter/material.dart';
@@ -17,29 +18,11 @@ class ProfileView extends StatefulWidget {
 }
 
 class _ProfileViewState extends State<ProfileView> {
-  // Future<User> fetchUser() async {
-  //   final response =
-  //       await http.get(Uri.parse('https://jsonplaceholder.typicode.com/posts'));
-  //   if (response.statusCode == 200) {
-  //     print('ada');
-  //     return User.fromJson(jsonDecode(response.body));
-  //   } else {
-  //     print('gada');
-  //     throw Exception('Failed to load album');
-  //   }
-  // }
-
-  // late Future<User> futureUser;
-
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   futureUser = fetchUser();
-  // }
+  User? user;
+  LoginViewModel loginViewModel = LoginViewModel();
 
   @override
   Widget build(BuildContext context) {
-    
     return Scaffold(
         body: Scaffold(
             resizeToAvoidBottomInset: false,
@@ -125,7 +108,9 @@ class _ProfileViewState extends State<ProfileView> {
                                 ),
                                 ListTile(
                                     title: Text('Logout'),
-                                    onTap: () {
+                                    onTap: () async {
+                                      await loginViewModel.logoutDataUsers();
+
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(

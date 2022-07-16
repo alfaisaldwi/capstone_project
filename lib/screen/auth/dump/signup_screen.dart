@@ -4,7 +4,7 @@ import 'dart:convert';
 
 import 'package:capstone_project/model/role_model.dart';
 import 'package:capstone_project/screen/auth/login_page.dart';
-import 'package:capstone_project/screen/auth/user_model.dart';
+import 'package:capstone_project/model/user_model.dart';
 import 'package:capstone_project/screen/auth/sign_up_view_model.dart';
 import 'package:flutter/gestures.dart';
 import 'package:http/http.dart' as http;

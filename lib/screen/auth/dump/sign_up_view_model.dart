@@ -3,7 +3,7 @@ import 'dart:convert';
 
 import 'package:capstone_project/model/role_model.dart';
 import 'package:http/http.dart' as http;
-import 'package:capstone_project/screen/auth/user_model.dart';
+import 'package:capstone_project/model/user_model.dart';
 
 class SignUpViewModel {
   Future<User> createDataUsers(
