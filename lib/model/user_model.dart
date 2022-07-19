@@ -3,13 +3,13 @@ import 'package:json_annotation/json_annotation.dart';
 
 class User {
   int? id;
-  String? name;
+  String? username;
   String? email;
   String? password;
 
   User({
     this.id,
-    this.name,
+    this.username,
     this.email,
     this.password,
   });
@@ -20,7 +20,7 @@ class User {
 
     return User(
       id: json['id'],
-      name: json['name'],
+      username: json['username'],
       email: json['email'],
       password: json['password'],
       // id_roles: roleList,
@@ -28,7 +28,7 @@ class User {
   }
   factory User.fromMap(Map<String, dynamic> json) => User(
         id: json["id"],
-        name: json["name"],
+        username: json["username"],
         email: json["email"],
         password: json["password"],
         // id_roles: json["id_roles"],

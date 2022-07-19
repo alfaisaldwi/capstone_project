@@ -133,13 +133,17 @@ class _SplashTermsState extends State<SplashTerms> {
                       height: 10,
                     ),
                     ElevatedButton(
-                      onPressed: () => 
-                      (
-                        Navigator.push( 
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => LoginScreen()))),
-                              
+                      onPressed: () async {
+                        if (_checkbox2 != false && _checkbox == true) {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => LoginScreen()));
+                        }
+                        SnackBar(
+                          content: Text('Silahkan Setujui Terms'),
+                        );
+                      },
                       child: const Text('Setuju'),
                     )
                   ],

@@ -8,12 +8,12 @@ import 'package:capstone_project/model/user_model.dart';
 
 class SignUpViewModel {
   Future<User?> createDataUsers(
-      String name, String email, String password) async {
+      String username, String email, String password) async {
     try {
       var response = await Dio().post(
           "https://app.swaggerhub.com/apis-docs/Azifaazka/VaccineCaps/1.0.0/user/createUser",
           data: {
-            'name': name,
+            'username': username,
             'email': email,
             'password': password,
             // 'role': role
@@ -22,7 +22,7 @@ class SignUpViewModel {
       if (response.statusCode == 200) {
         return User(
           id: response.data['id'],
-          name: response.data['name'],
+          username: response.data['username'],
           email: response.data['email'],
           password: response.data['password'],
           // id_roles: response.data['role']

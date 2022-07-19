@@ -20,10 +20,14 @@ class _HomeViewState extends State<HomeView> {
   int _currentIndex = 0;
   String url = "http://13.57.43.205/user/news";
   List cardList = [
-    Image.network("https://images.unsplash.com/photo-1547721064-da6cfb341d50"),
-    Image.network("https://picsum.photos/id/237/200/300"),
-    Image.network("https://picsum.photos/id/739/200/300"),
+    Image.network(
+        "https://ambon.go.id/wp-content/uploads/2021/01/Banner-vaksinasi.jpeg"),
+    Image.network(
+        "https://dinkes.acehprov.go.id/uploads/Slider_Vaksinasi_Covid-19.jpg"),
+    Image.network(
+        "https://www.acehnews.id/files/images/20210201-slider-pencanangan-vaksinasi-covid-19.jpg"),
   ];
+
   List<T> map<T>(List list, Function handler) {
     List<T> result = [];
     for (var i = 0; i < list.length; i++) {
@@ -44,7 +48,7 @@ class _HomeViewState extends State<HomeView> {
       child: Scaffold(
           backgroundColor: Colors.transparent,
           appBar: AppBar(
-            // automaticallyImplyLeading: true,
+            automaticallyImplyLeading: true,
             backgroundColor: Color(0xFF1789BC),
             title: Text(
               'HomeView',
@@ -84,10 +88,10 @@ class _HomeViewState extends State<HomeView> {
               items: cardList.map((card) {
                 return Builder(builder: (BuildContext context) {
                   return Container(
-                    height: MediaQuery.of(context).size.height * 0.30,
-                    width: MediaQuery.of(context).size.width,
+                    height: double.infinity,
+                    width: double.infinity,
                     child: Card(
-                      color: Colors.blueAccent,
+                      color: Colors.white,
                       child: card,
                     ),
                   );

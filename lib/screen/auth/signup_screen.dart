@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:capstone_project/component/my_alert.dart';
 import 'package:capstone_project/model/register_model.dart';
 import 'package:capstone_project/model/role_model.dart';
 import 'package:capstone_project/screen/auth/login_page.dart';
@@ -6,6 +7,7 @@ import 'package:capstone_project/screen/auth/login_view_model.dart';
 import 'package:capstone_project/model/user_model.dart';
 import 'package:capstone_project/screen/auth/sign_up_view_model.dart';
 import 'package:flutter/gestures.dart';
+import 'package:form_validator/form_validator.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -23,6 +25,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final TextEditingController _passwordController = TextEditingController();
   SignUpViewModel signUpViewModel = SignUpViewModel();
   LoginViewModel loginViewModel = LoginViewModel();
+  final validator1 = ValidationBuilder().email().maxLength(50).build();
+  final validatorus = ValidationBuilder().minLength(4).maxLength(50).build();
+
+  final validatorpw = ValidationBuilder().minLength(4).maxLength(50).build();
+  final _formKey = GlobalKey<FormState>();
   bool _isHidden = true;
   User? user;
   void _togglePasswordView() {
@@ -34,39 +41,42 @@ class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        resizeToAvoidBottomInset: false,
-        body: Container(
-          decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage("assets/images/background_register.PNG"),
-                  fit: BoxFit.cover)),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Container(
-                transformAlignment: Alignment.center,
-                child: Stack(
-                  children: <Widget>[
-                    Padding(
-                        padding: const EdgeInsets.fromLTRB(15, 180, 0, 0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text("Registrasi akun",
-                                style: GoogleFonts.poppins(
-                                    fontSize: 20, fontWeight: FontWeight.bold)),
-                          ],
-                        ))
-                  ],
-                ),
+      resizeToAvoidBottomInset: false,
+      body: Container(
+        decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage("assets/images/background_register.PNG"),
+                fit: BoxFit.cover)),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Container(
+              transformAlignment: Alignment.center,
+              child: Stack(
+                children: <Widget>[
+                  Padding(
+                      padding: const EdgeInsets.fromLTRB(15, 180, 0, 0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text("Registrasi akun",
+                              style: GoogleFonts.poppins(
+                                  fontSize: 20, fontWeight: FontWeight.bold)),
+                        ],
+                      ))
+                ],
               ),
-              SingleChildScrollView(
-                child: Container(
-                  padding: const EdgeInsets.only(top: 65, left: 20, right: 30),
+            ),
+            SingleChildScrollView(
+              child: Container(
+                padding: const EdgeInsets.only(top: 65, left: 20, right: 30),
+                child: Form(
+                  key: _formKey,
                   child: Column(
                     children: <Widget>[
-                      TextField(
+                      TextFormField(
+                        validator: validatorus,
                         keyboardType: TextInputType.emailAddress,
                         controller: _usernameController,
                         decoration: const InputDecoration(
@@ -86,7 +96,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       const SizedBox(
                         height: 20,
                       ),
-                      TextField(
+                      TextFormField(
+                        validator: validator1,
                         keyboardType: TextInputType.emailAddress,
                         controller: _emailController,
                         decoration: const InputDecoration(
@@ -106,7 +117,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       const SizedBox(
                         height: 20,
                       ),
-                      TextField(
+                      TextFormField(
+                        validator: validatorpw,
                         obscureText: _isHidden,
                         controller: _passwordController,
                         decoration: InputDecoration(
@@ -141,19 +153,24 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           width: 280,
                           child: RawMaterialButton(
                               onPressed: () async {
-                                // setState(() {
-                                //   user = signUpViewModel.createDataUsers(
-                                //       _usernameController.text,
-                                //       _emailController.text,
-                                //       _passwordController.text,);
-                                // });
+                               if (_formKey.currentState!.validate()) {
+                                    User? user = await loginViewModel.createDataUsers(
+                                      _usernameController.text
+                                      _emailController.text,
+                                      _passwordController.text,
+                                    );
 
-                                User? user =
-                                    await loginViewModel.createDataUsers(
-                                  _usernameController.text,
-                                  _emailController.text,
-                                  _passwordController.text,
-                                );
+                                    if (user != null) {
+                                      AlertSucces(context);
+                                      await Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                          builder: (_) => LoginScreen(),
+                                        ),
+                                      );
+                                    } else {
+                                      AlertFailed(context);
+                                    }}
+                                
                               },
                               child: Text('Registrasi',
                                   style: GoogleFonts.poppins(
@@ -185,13 +202,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                         style:
                                             new TextStyle(color: Colors.blue),
                                         recognizer: new TapGestureRecognizer()
-                                          ..onTap = () {
-                                            Navigator.push(
+                                          ..onTap = () async{
+                                            await Navigator.push(
                                                 context,
                                                 MaterialPageRoute(
                                                   builder: (context) =>
                                                       LoginScreen(),
                                                 ));
+                                                AlertSucces(context);
                                           })
                                   ],
                                 ),
@@ -201,9 +219,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ],
                   ),
                 ),
-              )
-            ],
-          ),
-        ));
+              ),
+            )
+          ],
+        ),
+      ),
+    );
   }
 }

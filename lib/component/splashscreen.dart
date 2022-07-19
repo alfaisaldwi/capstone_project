@@ -1,7 +1,10 @@
 import 'package:capstone_project/component/splashTerms.dart';
 import 'package:capstone_project/screen/auth/login_page.dart';
+import 'package:capstone_project/screen/home/home_view.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
+
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashScreenPage extends StatefulWidget {
   const SplashScreenPage({Key? key}) : super(key: key);
@@ -10,11 +13,27 @@ class SplashScreenPage extends StatefulWidget {
 }
 
 class _SplashScreenPageState extends State<SplashScreenPage> {
+  SharedPreferences? logindata;
+  late bool newuser;
+
   @override
+  void check_if_already_login() async {
+    logindata = await SharedPreferences.getInstance();
+    newuser = (logindata!.getBool('login') ?? true);
+    print(newuser);
+    if (newuser == false) {
+      Navigator.pushReplacement(
+          context, new MaterialPageRoute(builder: (context) => HomeView()));
+    } else {
+      Navigator.pushReplacement(
+          context, new MaterialPageRoute(builder: (context) => SplashTerms()));
+    }
+  }
+
   void initState() {
     // TODO: implement initState
     super.initState();
-    openSplashScreen();
+    check_if_already_login();
   }
 
   openSplashScreen() async {

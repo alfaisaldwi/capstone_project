@@ -20,7 +20,9 @@ class LoginViewModel {
 
       if (response.statusCode == 200) {
         print(response.data);
-        SnackBar(content: Text('Login Berhasil'),);
+        SnackBar(
+          content: Text('Login Berhasil'),
+        );
         return User.fromJson(response.data);
       } else {
         print(response.statusCode);
@@ -34,10 +36,10 @@ class LoginViewModel {
   }
 
   Future<User?> createDataUsers(
-      String name, String email, String password) async {
+      String username, String email, String password) async {
     try {
       var response = await Dio().post(baseUrl + 'user/register', data: {
-        'name': name,
+        'username': username,
         'email': email,
         'password': password,
         // 'role': role
@@ -47,7 +49,7 @@ class LoginViewModel {
         print(response.data);
         return User(
           id: response.data['id'],
-          name: response.data['name'],
+          username: response.data['username'],
           email: response.data['email'],
           password: response.data['password'],
           // id_roles: response.data['role']
@@ -58,17 +60,6 @@ class LoginViewModel {
       return null;
     } catch (e) {
       throw Exception(e.toString());
-    }
-  }
-
-  Future<User?> logoutDataUsers() async {
-    var response = await Dio().post(baseUrl + 'user/logout');
-
-    if (response.statusCode == 200) {
-      print(response.data);
-      return User.fromJson(response.data);
-    } else {
-      print('errorrr');
     }
   }
 }

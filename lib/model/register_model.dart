@@ -1,10 +1,10 @@
 class Register {
-  String name;
+  String username;
   String email;
   String password;
 
   Register({
-    required this.name,
+    required this.username,
     required this.email,
     required this.password,
   });
@@ -14,14 +14,14 @@ class Register {
     // List<Role> roleList = list.map((i) => Role.fromJson(i)).toList();
 
     return Register(
-      name: json['name'],
+      username: json['username'],
       email: json['email'],
       password: json['password'],
       // id_roles: roleList,
     );
   }
   factory Register.fromMap(Map<String, dynamic> json) => Register(
-        name: json["name"],
+        username: json["username"],
         email: json["email"],
         password: json["password"],
         // id_roles: json["id_roles"],

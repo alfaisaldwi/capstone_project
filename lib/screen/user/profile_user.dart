@@ -4,11 +4,12 @@ import 'dart:convert';
 
 import 'package:capstone_project/screen/auth/login_page.dart';
 import 'package:capstone_project/screen/auth/login_view_model.dart';
-import 'package:capstone_project/screen/user/profile_model.dart';
+import 'package:capstone_project/model/profile_model.dart';
 import 'package:capstone_project/screen/user/test.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ProfileView extends StatefulWidget {
   ProfileView({Key? key}) : super(key: key);
@@ -109,9 +110,10 @@ class _ProfileViewState extends State<ProfileView> {
                                 ListTile(
                                     title: Text('Logout'),
                                     onTap: () async {
-                                      await loginViewModel.logoutDataUsers();
-
-                                      Navigator.push(
+                                      SharedPreferences preferences =
+                                          await SharedPreferences.getInstance();
+                                      await preferences.clear();
+                                      Navigator.pushReplacement(
                                         context,
                                         MaterialPageRoute(
                                           builder: (context) => LoginScreen(),

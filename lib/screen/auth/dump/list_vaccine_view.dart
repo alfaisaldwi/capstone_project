@@ -30,63 +30,70 @@ class _ListVaccineViewState extends State<ListVaccineView> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        decoration: const BoxDecoration(
-            gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                stops: [0.0, 1],
-                colors: [Color(0xFFFFFFFF), Color(0xFFE3F5FD)])),
-        child: Scaffold(
-            backgroundColor: Colors.transparent,
-            appBar: AppBar(
-              title: Text(
-                'Daftar Vaksin',
-                style: GoogleFonts.poppins(),
-              ),
-              centerTitle: true,
-            ),
-            body: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(children: [
-                TextField(
-                    cursorColor: Colors.black,
-                    decoration: const InputDecoration(
-                        hintText: 'Masukan nama rumah sakit',
-                        suffixIcon: Icon(
-                          Icons.search_outlined,
-                          color: Colors.black,
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.black),
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(10),
-                            )),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.black),
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(10),
-                          ),
-                        ))),
-                const SizedBox(
-                  height: 20,
-                ),
-                SizedBox(
-                  width: double.infinity,
-                  child: Container(
-                    child: Text(
-                      "Sesi Tersedia",
-                      style: GoogleFonts.poppins(fontWeight: FontWeight.bold),
-                      textAlign: TextAlign.left,
-                    ),
-                  ),
-                ),
-                Flexible(
-                  child: ListView.builder(
-                      padding: EdgeInsets.all(10),
-                      itemCount: DummyHospital.length,
+      decoration: const BoxDecoration(
+          gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              stops: [0.0, 1],
+              colors: [Color(0xFFFFFFFF), Color(0xFFE3F5FD)])),
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        appBar: AppBar(
+          title: Text(
+            'Daftar Vaksin',
+            style: GoogleFonts.poppins(),
+          ),
+          centerTitle: true,
+        ),
+        body: Padding(
+            padding: const EdgeInsets.all(13.0),
+            child: FutureBuilder<List<HospitalModel>>(
+                future: listVaccineModel.getAllHospital(),
+                builder: (context, snapshot) {
+                  return ListView.builder(
+                      itemCount: snapshot.data?.length,
                       itemBuilder: (context, index) {
+                        final item = snapshot.data![index];
                         return Column(
                           children: [
+                            TextField(
+                                cursorColor: Colors.black,
+                                decoration: const InputDecoration(
+                                    hintText: 'Masukan nama rumah sakit',
+                                    suffixIcon: Icon(
+                                      Icons.search_outlined,
+                                      color: Colors.black,
+                                    ),
+                                    enabledBorder: OutlineInputBorder(
+                                        borderSide:
+                                            BorderSide(color: Colors.black),
+                                        borderRadius: BorderRadius.all(
+                                          Radius.circular(10),
+                                        )),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderSide:
+                                          BorderSide(color: Colors.black),
+                                      borderRadius: BorderRadius.all(
+                                        Radius.circular(10),
+                                      ),
+                                    ))),
+                            const SizedBox(
+                              height: 20,
+                            ),
+                            SizedBox(
+                              width: double.infinity,
+                              child: Container(
+                                child: Text(
+                                  "Sesi Tersedia",
+                                  style: GoogleFonts.poppins(
+                                      fontWeight: FontWeight.bold),
+                                  textAlign: TextAlign.left,
+                                ),
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 30,
+                            ),
                             Card(
                               margin: EdgeInsets.only(top: 2),
                               elevation: 20,
@@ -110,7 +117,7 @@ class _ListVaccineViewState extends State<ListVaccineView> {
                                           borderRadius: BorderRadius.all(
                                               Radius.circular(5))),
                                       child: Text(
-                                        DummyHospital[index].name,
+                                        '${item.name}',
                                         style: GoogleFonts.poppins(
                                             color: Colors.white,
                                             fontWeight: FontWeight.bold),
@@ -130,7 +137,8 @@ class _ListVaccineViewState extends State<ListVaccineView> {
                                         size: 45,
                                       ),
                                     ),
-                                    title: Text(DummyHospital[index].address),
+                                    title: Text(
+                                        'Kota Jakarta Pusat Kota Jakarta Pusat Kota Jakarta Pusat'),
                                   ),
                                   const SizedBox(
                                     height: 30,
@@ -221,15 +229,12 @@ class _ListVaccineViewState extends State<ListVaccineView> {
                                   ),
                                 ],
                               ),
-                            ),
-                            SizedBox(
-                              height: 20,
                             )
                           ],
                         );
-                      }),
-                ),
-              ]),
-            )));
+                      });
+                })),
+      ),
+    );
   }
 }
