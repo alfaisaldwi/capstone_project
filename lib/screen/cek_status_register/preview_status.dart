@@ -1,16 +1,16 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class PreviewVaccineForm extends StatefulWidget {
-  PreviewVaccineForm({Key? key}) : super(key: key);
+class PreviewStatus extends StatefulWidget {
+  PreviewStatus({Key? key}) : super(key: key);
 
   @override
-  State<PreviewVaccineForm> createState() => _PreviewVaccineFormState();
+  State<PreviewStatus> createState() => _PreviewStatusState();
 }
 
-class _PreviewVaccineFormState extends State<PreviewVaccineForm> {
+class _PreviewStatusState extends State<PreviewStatus> {
   var spaceTab = TableRow(children: [
     SizedBox(
       height: 15,
@@ -54,11 +54,11 @@ class _PreviewVaccineFormState extends State<PreviewVaccineForm> {
                         padding: const EdgeInsets.only(top: 12),
                         child: Container(
                           alignment: Alignment.center,
-                          width: 330,
+                          width: 340,
                           height: 30,
                           decoration: BoxDecoration(
                               color: Colors.blue,
-                              borderRadius: BorderRadius.all(Radius.circular(5))),
+                              borderRadius: BorderRadius.all(Radius.circular(10))),
                           child: Text(
                             "RS. Cipto Mangunkusumo",
                             style: GoogleFonts.poppins(
@@ -196,16 +196,16 @@ class _PreviewVaccineFormState extends State<PreviewVaccineForm> {
                 const SizedBox(
                   height: 25,
                 ),
-                Align(
-                  alignment: Alignment.bottomRight,
-                  child: Padding(
-                    padding: EdgeInsets.only(right: 28),
-                    child: ElevatedButton(
-                      onPressed: () {},
-                      child: Text('Daftar'),
-                    ),
-                  ),
-                ),
+                // Align(
+                //   alignment: Alignment.bottomRight,
+                //   child: Padding(
+                //     padding: EdgeInsets.only(right: 28),
+                //     child: ElevatedButton(
+                //       onPressed: () {},
+                //       child: Text('Daftar'),
+                //     ),
+                //   ),
+                // ),
                 const SizedBox(
                   height: 20,
                 ),

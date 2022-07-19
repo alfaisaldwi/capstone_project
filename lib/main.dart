@@ -9,14 +9,18 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
+            primarySwatch: Colors.blue,
+            checkboxTheme: CheckboxThemeData(
+              checkColor: MaterialStateProperty.all(Colors.white),
+              fillColor: MaterialStateProperty.all(Colors.blue),
+            )),
         routes: {
           '/HomePage': (context) => HomeView(),
         },
